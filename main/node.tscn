@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://betwjitaexp6u"]
+
+[ext_resource type="PackedScene" uid="uid://b28gpvqd5kh6e" path="res://player/player_grav.tscn" id="1_kdc6b"]
+[ext_resource type="PackedScene" uid="uid://cvvf6rt75h0yu" path="res://kinematic_character_2d_starter/kinematic_character_2d_starter/map.tscn" id="2_br4s7"]
+
+[node name="Node" type="Node"]
+
+[node name="player_grav" parent="." instance=ExtResource("1_kdc6b")]
+position = Vector2(286, 62)
+
+[node name="Node" parent="." instance=ExtResource("2_br4s7")]

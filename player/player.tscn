@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2psy51kutlr2"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_vto1o"]
+[ext_resource type="Texture2D" uid="uid://vkhcsjd25oo3" path="res://dodge_the_creeps_2d_assets/art/playerGrey_Jump1.png" id="2_vjtn7"]
+[ext_resource type="Texture2D" uid="uid://cd11w2kk8re8p" path="res://dodge_the_creeps_2d_assets/art/playerGrey_walk1.png" id="3_l8ii8"]
+[ext_resource type="Texture2D" uid="uid://k2fjyeqyajw7" path="res://dodge_the_creeps_2d_assets/art/playerGrey_walk2.png" id="4_y18rd"]
+[ext_resource type="Texture2D" uid="uid://cde2352vr0dhk" path="res://dodge_the_creeps_2d_assets/art/playerGrey_attack1.png" id="5_b3h3m"]
+[ext_resource type="Script" path="res://player/attacking.gd" id="6_1fv1w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uovej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_l8ii8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vjtn7")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_l8ii8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y18rd")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sa1me"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_b3h3m")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hwxtc"]
+radius = 27.0
+height = 70.0
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_vto1o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_uovej")
+animation = &"Jump"
+
+[node name="attacking" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_sa1me")
+animation = &"attack"
+offset = Vector2(46.235, 0)
+script = ExtResource("6_1fv1w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_hwxtc")
